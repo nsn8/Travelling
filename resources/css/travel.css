@@ -1,0 +1,41 @@
+#travel-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.travel-info-input {
+    margin-right: 5px;
+    border-color: grey;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    height: 25px;
+}
+
+.travel-info-block {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+#add-document-button {
+    width: fit-content;
+    height: fit-content;
+    margin-right: 10px;
+    border-color: grey;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px;
+}
+
+#add-document-button:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+}
+
+#travel-timeline-upper-row {
+
+}

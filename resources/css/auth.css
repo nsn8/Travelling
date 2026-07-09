@@ -1,0 +1,9 @@
+.auth-control {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+input, button {
+    width: 200px;
+    height: 30px;
+}

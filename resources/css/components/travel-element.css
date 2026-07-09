@@ -1,0 +1,28 @@
+.travel-name {
+    margin-top: 5px;
+    margin-left: 5px;
+    height: fit-content;
+}
+
+.date-label {
+    margin-left: 5px;
+}
+
+.travel-upper-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.delete-icon-container {
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-left: auto;
+}
+
+.readonly {
+    background-color: #999999 !important;
+    cursor: not-allowed !important;
+}

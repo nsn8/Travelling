@@ -1,0 +1,62 @@
+#filters-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.travel-filter {
+    margin-right: 5px;
+    border-color: grey;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px;
+}
+
+.travel-search {
+    margin-right: 5px;
+    border-color: grey;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px;
+}
+
+.travel-filter-active {
+    background-color: lightgrey;
+}
+
+.travel-filter:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+}
+
+#travels-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 5px;
+}
+
+.travels-element {
+    margin-top: 5px;
+    margin-right: 1%;
+    width: 23% !important;
+    height: 100px;
+    border-color: grey;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+.travels-element:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+}
+
+#add-travel-button {
+
+}
