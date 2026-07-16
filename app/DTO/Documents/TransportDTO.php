@@ -24,23 +24,23 @@ use App\DTO\Documents\DocumentDTO;
 abstract class TransportDTO extends DocumentDTO
 {
     protected ?string $transportName;
-    protected string $departureCountry;
-    protected string $arrivalCountry;
-    protected string $departureCity;
-    protected string $arrivalCity;
-    protected string $departureDate;
-    protected string $arrivalDate;
+    protected ?string $departureCountry;
+    protected ?string $arrivalCountry;
+    protected ?string $departureCity;
+    protected ?string $arrivalCity;
+    protected ?string $departureDate;
+    protected ?string $arrivalDate;
 
     public function __construct(array $data)
     {
         parent::__construct($data);
 
-        $this->transportName = $data['transport_name'];
-        $this->departureCountry = $data['departure_country'];
-        $this->arrivalCountry = $data['arrival_country'];
-        $this->departureCity = $data['departure_city'];
-        $this->arrivalCity = $data['arrival_city'];
-        $this->departureDate = $data['departure_date'];
-        $this->arrivalDate = $data['arrival_date'];
+        $this->transportName = $data['transport_name'] ?? null;
+        $this->departureCountry = $data['departure_country'] ?? null;
+        $this->arrivalCountry = $data['arrival_country'] ?? null;
+        $this->departureCity = $data['departure_city'] ?? null;
+        $this->arrivalCity = $data['arrival_city'] ?? null;
+        $this->departureDate = $data['departure_date'] ?? null;
+        $this->arrivalDate = $data['arrival_date'] ?? null;
     }
 }

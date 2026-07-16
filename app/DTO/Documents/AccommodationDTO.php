@@ -22,23 +22,24 @@ use App\Enums\DocumentTypes;
 
 class AccommodationDTO extends DocumentDTO
 {
-    protected string $accommodationName;
-    protected string $accommodationCountry;
-    protected string $accommodationCity;
-    protected string $accommodationAddress;
-    protected string $checkInDate;
-    protected string $checkOutDate;
+    protected ?string $accommodationName;
+    protected ?string $accommodationCountry;
+    protected ?string $accommodationCity;
+    protected ?string $accommodationAddress;
+    protected ?string $checkInDate;
+    protected ?string $checkOutDate;
 
     public function __construct(array $data)
     {
         parent::__construct($data);
 
-        $this->accommodationName = $data['accommodation_name'];
-        $this->accommodationCountry = $data['accommodation_country'];
-        $this->accommodationCity = $data['accommodation_city'];
-        $this->accommodationAddress = $data['accommodation_address'];
-        $this->checkInDate = $data['check_in_date'];
-        $this->checkOutDate = $data['check_out_date'];
-        $this->type = DocumentTypes::ACCOMMODATION->value;
+        $this->accommodationName = $data['accommodation_name'] ?? null;
+        $this->accommodationCountry = $data['accommodation_country'] ?? null;
+        $this->accommodationCity = $data['accommodation_city'] ?? null;
+        $this->accommodationAddress = $data['accommodation_address'] ?? null;
+        $this->checkInDate = $data['check_in_date'] ?? null;
+        $this->checkOutDate = $data['check_out_date'] ?? null;
+
+        $this->setType(DocumentTypes::ACCOMMODATION->value);
     }
 }

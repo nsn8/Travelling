@@ -39,5 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix' => 'documents'], static function () {
         Route::get('/list', [DocumentsController::class, 'list']);
         Route::post('/save', [DocumentsController::class, 'save']);
+        Route::post('/delete', [DocumentsController::class, 'delete']);
     });
 });

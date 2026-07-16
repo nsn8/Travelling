@@ -79,6 +79,30 @@ $('#save-document-button').on('click', async function () {
     renderDocumentsList(list);
 });
 
+$('#delete-document-button').on('click', async function() {
+    let formData = new FormData(document.querySelector('#delete-document-form'));
+
+    await deleteDocument(formData);
+
+    let modal = $('#deleteDocumentModal');
+
+    closeModal(modal);
+
+    let list = await fetchDocumentsList();
+
+    renderDocumentsList(list);
+})
+
+async function deleteDocument(data) {
+    return await $.ajax({
+        url: '/documents/delete',
+        method: 'POST',
+        data: data,
+        processData: false,
+        contentType: false,
+    });
+}
+
 $('[name="document_type"]').on('change', function () {
     let type = $(this).val();
 

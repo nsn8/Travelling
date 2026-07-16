@@ -9,13 +9,15 @@ use App\Models\Documents\Document;
 
 class DocumentFactory
 {
-    public static function create(DocumentDTO $dto): Document
+    public static function create(DocumentDTO $dto, bool $forDelete = false): Document
     {
         $document = match ($dto->getType()) {
             DocumentTypes::ACCOMMODATION->value => new Accommodation($dto->getId()),
         };
 
-        $document->setData($dto);
+        if (!$forDelete) {
+            $document->setData($dto);
+        }
 
         return $document;
     }

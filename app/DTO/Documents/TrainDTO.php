@@ -17,19 +17,20 @@ use App\Enums\TransportTypes;
 
 class TrainDTO extends TransportDTO
 {
-    protected string $departureRailwayStation;
-    protected string $arrivalRailwayStation;
-    protected string $cartNumber;
-    protected string $placeNumber;
+    protected ?string $departureRailwayStation;
+    protected ?string $arrivalRailwayStation;
+    protected ?string $cartNumber;
+    protected ?string $placeNumber;
 
     public function __construct(array $data)
     {
         parent::__construct($data);
 
-        $this->departureRailwayStation = $data['departure_railway_station'];
-        $this->arrivalRailwayStation = $data['arrival_railway_station'];
-        $this->cartNumber = $data['cart_number'];
-        $this->placeNumber = $data['place_number'];
-        $this->type = TransportTypes::TRAIN->value;
+        $this->departureRailwayStation = $data['departure_railway_station'] ?? null;
+        $this->arrivalRailwayStation = $data['arrival_railway_station'] ?? null;
+        $this->cartNumber = $data['cart_number'] ?? null;
+        $this->placeNumber = $data['place_number'] ?? null;
+
+        $this->setType(TransportTypes::TRAIN->value);
     }
 }

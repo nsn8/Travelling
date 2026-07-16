@@ -29,4 +29,5 @@
         </div>
     </div>
     @include('includes.create-document-dialog')
+    @include('includes.delete-document-dialog')
 @endsection

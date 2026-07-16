@@ -19,7 +19,7 @@
 
         travelUpperRow.append(title);
 
-        const deleteIconContainer = $('<div>', {class: 'delete-icon-container'})
+        const deleteIconContainer = $('<div>', {class: 'delete-travel-icon-container'})
         const deleteIcon = $('<i>', {class: 'fa-solid fa-trash trash-icon'})
         deleteIconContainer.append(deleteIcon);
 

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('accommodation_country');
             $table->string('accommodation_city');
             $table->string('accommodation_address');
-            $table->date('check_in_date');
-            $table->date('check_out_date');
+            $table->datetime('check_in_date');
+            $table->datetime('check_out_date');
             $table->timestamps();
         });
     }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\DTO\Documents\DocumentDTO;
 use App\DTO\Documents\DocumentsListDTO;
 use App\Factories\DocumentDTOFactory;
+use App\Http\Requests\DocumentDeleteRequest;
 use App\Http\Requests\DocumentListRequest;
 use App\Http\Requests\DocumentSaveRequest;
 use App\Http\Services\DocumentsService;
@@ -32,5 +34,14 @@ class DocumentsController extends Controller
         $data = new DocumentsListDTO($request->input());
 
         return response()->json($this->service->getList($data));
+    }
+
+    public function delete(DocumentDeleteRequest $request): JsonResponse
+    {
+        $data = DocumentDTOFactory::create($request->input());
+
+        $this->service->delete($data);
+
+        return response()->json(['success' => true]);
     }
 }

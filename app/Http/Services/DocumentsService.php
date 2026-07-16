@@ -18,4 +18,9 @@ class DocumentsService extends Service
     {
         return new DocumentsCollection($documentsListDTO)->get();
     }
+
+    public function delete(DocumentDTO $documentDTO): bool
+    {
+        return DocumentFactory::create($documentDTO, true)->delete();
+    }
 }

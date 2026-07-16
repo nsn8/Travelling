@@ -17,19 +17,20 @@ use App\Enums\TransportTypes;
 
 class BusDTO extends TransportDTO
 {
-    protected string $departureStation;
-    protected string $arrivalStation;
-    protected string $busNumber;
-    protected string $seatNumber;
+    protected ?string $departureStation;
+    protected ?string $arrivalStation;
+    protected ?string $busNumber;
+    protected ?string $seatNumber;
 
     public function __construct(array $data)
     {
         parent::__construct($data);
 
-        $this->departureStation = $data['departure_station'];
-        $this->arrivalStation = $data['arrival_station'];
-        $this->busNumber = $data['bus_number'];
-        $this->seatNumber = $data['seat_number'];
-        $this->type = TransportTypes::BUS->value;
+        $this->departureStation = $data['departure_station'] ?? null;
+        $this->arrivalStation = $data['arrival_station'] ?? null;
+        $this->busNumber = $data['bus_number'] ?? null;
+        $this->seatNumber = $data['seat_number'] ?? null;
+
+        $this->setType(TransportTypes::BUS->value);
     }
 }

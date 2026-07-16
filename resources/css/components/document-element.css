@@ -8,3 +8,16 @@
     margin-left: 5px;
     font-style: italic;
 }
+
+.document-upper-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.delete-document-icon-container {
+    margin-top: 5px;
+    margin-left: auto;
+}

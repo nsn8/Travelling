@@ -13,7 +13,7 @@
                 <label>Тип документа</label>
                 <select name="document_type">
                     <option value="accommodation">Проживание</option>
-                    <option value="transport">Транспорт</option>
+{{--                    <option value="transport">Транспорт</option>--}}
                 </select>
             </div>
             @include('includes.documents.accommodation-info')

@@ -24,8 +24,8 @@ use App\Enums\TransportTypes;
 
 class FlightDTO extends TransportDTO
 {
-    protected string $departureAirport;
-    protected string $arrivalAirport;
+    protected ?string $departureAirport;
+    protected ?string $arrivalAirport;
     protected bool $luggageIncluded;
     protected ?int $luggageMaxWeight;
     protected ?int $luggageWidth;
@@ -36,13 +36,14 @@ class FlightDTO extends TransportDTO
     {
         parent::__construct($data);
 
-        $this->departureAirport = $data['departure_airport'];
-        $this->arrivalAirport = $data['arrival_airport'];
+        $this->departureAirport = $data['departure_airport'] ?? null;
+        $this->arrivalAirport = $data['arrival_airport'] ?? null;
         $this->luggageIncluded = $data['luggage_included'] === 'on';
         $this->luggageMaxWeight = $data['luggage_max_weight'] ?? null;
         $this->luggageWidth = $data['luggage_width'] ?? null;
         $this->luggageHeight = $data['luggage_height'] ?? null;
         $this->luggageLength = $data['luggage_length'] ?? null;
-        $this->type = TransportTypes::FLIGHT->value;
+
+        $this->setType(TransportTypes::FLIGHT->value);
     }
 }

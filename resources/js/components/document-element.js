@@ -9,16 +9,44 @@
         element.data('accommodation_address', documentData.accommodation_address);
         element.data('check_in_date', documentData.check_in_date);
         element.data('check_out_date', documentData.check_out_date);
+        element.data('id', documentData.id);
+
+        const documentUpperRow = $('<div>', {class: 'document-upper-row'});
 
         const elementType = $('<h4>', {class: 'document-type'});
         elementType.html(documentData.type ?? 'Проживание');
-        element.append(elementType);
+        documentUpperRow.append(elementType);
+
+        const deleteIconContainer = $('<div>', {class: 'delete-document-icon-container'})
+        const deleteIcon = $('<i>', {class: 'fa-solid fa-trash trash-icon'})
+        deleteIconContainer.append(deleteIcon);
+
+        deleteIcon.on('click', function () {
+            let modal = $('#deleteDocumentModal');
+
+            modal.find('[name="id"]').val(element.data('id'));
+            modal.find('[name="name"]').val(element.data('name'));
+            modal.find('[name="document_type"]').val('accommodation');
+
+            modal.find('#deleted-name').html(element.data('name'));
+
+            modal.addClass('show');
+            $('body').css('overflow', 'hidden');
+        })
+
+        documentUpperRow.append(deleteIconContainer);
+
+        element.append(documentUpperRow);
 
         const elementName = $('<h4>', {class: 'document-name'});
         elementName.html(documentData.name);
         element.append(elementName);
 
         element.on('click', function (event) {
+            if ($(event.target).is(deleteIcon)) {
+                return;
+            }
+
             let modal = $('#documentModal');
 
             modal.find('[name="name"]').val(element.data('name'));
@@ -30,6 +58,7 @@
             modal.find('[name="accommodation_address"]').val(element.data('accommodation_address'));
             modal.find('[name="check_in_date"]').val(element.data('check_in_date'));
             modal.find('[name="check_out_date"]').val(element.data('check_out_date'));
+            modal.find('[name="id"]').val(element.data('id'));
 
             modal.addClass('show');
             $('body').css('overflow', 'hidden');
