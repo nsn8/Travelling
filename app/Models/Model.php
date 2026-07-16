@@ -47,7 +47,7 @@ abstract class Model
         return $this->id ?? 0;
     }
 
-    protected function setId(int $id): Model
+    protected function setId(?int $id): Model
     {
         $this->id = $id;
         return $this;
@@ -89,7 +89,6 @@ abstract class Model
         $additionalData = [
             'created_at' => $now,
             'updated_at' => $now,
-            'user_id'    => Auth::id()
         ];
 
         if (!is_null($this->id)) {

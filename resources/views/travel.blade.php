@@ -22,12 +22,11 @@
     <div id="route">
         <h2>Маршрут</h2>
     </div>
-    <div id="travel-timeline">
-        <div id="travel-timeline-upper-row">
+    <div id="documents-list">
+        <div id="documents-list-upper-row">
             <h2>Документы</h2>
             <div id="add-document-button">+ Добавить новый документ</div>
         </div>
-
     </div>
     @include('includes.create-document-dialog')
 @endsection

@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::group(['prefix' => 'documents'], static function () {
-       Route::post('/save', [DocumentsController::class, 'save']);
+        Route::get('/list', [DocumentsController::class, 'list']);
+        Route::post('/save', [DocumentsController::class, 'save']);
     });
 });

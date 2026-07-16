@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\DTO\Documents\DocumentsListDTO;
 use App\Factories\DocumentDTOFactory;
+use App\Http\Requests\DocumentListRequest;
 use App\Http\Requests\DocumentSaveRequest;
 use App\Http\Services\DocumentsService;
 use Illuminate\Http\JsonResponse;
@@ -23,5 +25,12 @@ class DocumentsController extends Controller
         $this->service->save($data);
 
         return response()->json(['success' => true]);
+    }
+
+    public function list(DocumentListRequest $request): JsonResponse
+    {
+        $data = new DocumentsListDTO($request->input());
+
+        return response()->json($this->service->getList($data));
     }
 }

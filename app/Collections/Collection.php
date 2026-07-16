@@ -3,6 +3,7 @@
 namespace App\Collections;
 
 use App\DTO\DTO;
+use App\DTO\Travels\ListDTO;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,7 @@ abstract class Collection
 
     protected ConnectionInterface $connection;
 
-    public function __construct(DTO $data)
+    public function __construct(ListDTO $data)
     {
         $this->connection = DB::connection('mysql');
 
@@ -36,9 +37,7 @@ abstract class Collection
 
     public function getAll(): LaravelCollection
     {
-        return $this->builder
-            ->where('is_deleted', 0)
-            ->get();
+        return $this->builder->get();
     }
 
     public final function get(): array

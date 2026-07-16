@@ -15,9 +15,7 @@ class DocumentFactory
             DocumentTypes::ACCOMMODATION->value => new Accommodation($dto->getId()),
         };
 
-        $document->setTravelId($dto->getId());
-        $document->setName($dto->getName());
-        $document->setData($dto);dd($document);
+        $document->setData($dto);
 
         return $document;
     }

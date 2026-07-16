@@ -17,7 +17,7 @@ abstract class DocumentDTO extends DTO
 {
     protected ?int $id;
     protected ?string $name;
-    protected string $type;
+    private string $type;
     protected int $travelId;
 
     public function __construct(array $data)

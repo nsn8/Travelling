@@ -48,6 +48,13 @@ class TravelsCollection extends Collection
             ->get();
     }
 
+    public function getAll(): LaravelCollection
+    {
+        return $this->builder
+            ->where('is_deleted', 0)
+            ->get();
+    }
+
     #[\Override]
     public function init(): void
     {

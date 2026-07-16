@@ -2,7 +2,6 @@
 
 namespace App\DTO\Travels;
 
-use App\DTO\DTO;
 use App\Enums\TravelsCollectionTypes;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
  * @method TravelsListDTO getSortingDirection()
  */
 
-class TravelsListDTO extends DTO
+class TravelsListDTO extends ListDTO
 {
     protected TravelsCollectionTypes $type;
 

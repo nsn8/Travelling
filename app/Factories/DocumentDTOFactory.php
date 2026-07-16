@@ -14,19 +14,11 @@ class DocumentDTOFactory
 {
     public static function create(array $data): DocumentDTO
     {
-        if ($data['document_type'] == DocumentTypes::ACCOMMODATION->value) {
-            return new AccommodationDTO($data);
-        }
-
-        if ($data['document_type'] == DocumentTypes::TRANSPORT->value) {
-            switch ($data['transport_type']) {
-                case TransportTypes::FLIGHT->value:
-                    return new FlightDTO($data);
-                case TransportTypes::TRAIN->value:
-                    return new TrainDTO($data);
-                case TransportTypes::BUS->value:
-                    return new BusDTO($data);
-            }
-        }
+        return match ($data['document_type']) {
+            DocumentTypes::ACCOMMODATION->value => new AccommodationDTO($data),
+            TransportTypes::FLIGHT->value       => new FlightDTO($data),
+            TransportTypes::TRAIN->value        => new TrainDTO($data),
+            TransportTypes::BUS->value          => new BusDTO($data),
+        };
     }
 }
