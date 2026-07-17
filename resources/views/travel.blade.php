@@ -39,6 +39,7 @@
     @parent
     @vite(['resources/js/components/accommodation-element.js'])
     @vite(['resources/js/components/bus-element.js'])
+    @vite(['resources/js/components/train-element.js'])
     @vite(['resources/js/travel.js'])
 @endsection
 
