@@ -47,6 +47,7 @@ $('#add-document-button').on('click', function () {
 
 function clearModal(modal)
 {
+    modal.find('[name="id"]').val('');
     modal.find('[name="name"]').val('');
     ///@TODO: подставить проживание по-умолчанию
     //modal.find('[name="document_type"]').val(element.data('name'));
