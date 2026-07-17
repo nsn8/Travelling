@@ -20,7 +20,7 @@
     margin-right: 10px;
 }
 
-#add-document-button {
+.button {
     width: fit-content;
     height: fit-content;
     margin-right: 10px;
@@ -31,9 +31,14 @@
     padding: 5px;
 }
 
-#add-document-button:hover {
+.button:hover {
     background-color: aliceblue;
     cursor: pointer;
+}
+
+
+#add-document-button {
+
 }
 
 #documents-list-upper-row {
@@ -55,4 +60,8 @@
 .document-element:hover {
     background-color: aliceblue;
     cursor: pointer;
+}
+
+.return-button-container {
+    margin-top: 5px;
 }

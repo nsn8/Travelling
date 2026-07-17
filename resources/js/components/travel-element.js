@@ -19,8 +19,8 @@
 
         travelUpperRow.append(title);
 
-        const deleteIconContainer = $('<div>', {class: 'delete-travel-icon-container'})
-        const deleteIcon = $('<i>', {class: 'fa-solid fa-trash trash-icon'})
+        const deleteIconContainer = $('<div>', {class: 'delete-travel-icon-container'});
+        const deleteIcon = $('<i>', {class: 'fa-solid fa-trash trash-icon'});
         deleteIconContainer.append(deleteIcon);
 
         deleteIcon.on('click', function () {
@@ -34,12 +34,30 @@
 
             modal.addClass('show');
             $('body').css('overflow', 'hidden');
-        })
+        });
 
         if (element.data('is_deleted')) {
             deleteIconContainer.css('display', 'none');
         }
 
+        const editIconContainer = $('<div>', {class: 'edit-travel-icon-container'});
+        const editIcon = $('<i>', {class: 'fa-solid fa-edit trash-icon'});
+        editIconContainer.append(editIcon);
+
+        editIcon.on('click', function () {
+            let modal = $('#travelModal');
+
+            modal.find('[name="travel_id"]').val(element.data('id'));
+            modal.find('[name="is_deleted"]').val(element.data('is_deleted'));
+            modal.find('[name="travel_name"]').val(element.data('travel-name'));
+            modal.find('[name="start_date"]').val(element.data('start-date'));
+            modal.find('[name="end_date"]').val(element.data('end-date'));
+
+            modal.addClass('show');
+            $('body').css('overflow', 'hidden');
+        });
+
+        travelUpperRow.append(editIconContainer);
         travelUpperRow.append(deleteIconContainer);
 
         element.append(travelUpperRow);
@@ -54,20 +72,13 @@
         element.append(endDate);
 
         element.on('click', function (event) {
-            if (element.data('is_deleted') || $(event.target).is(deleteIcon)) {
+            if (element.data('is_deleted') || $(event.target).is(deleteIcon) || $(event.target).is(editIcon)) {
                 return;
             }
 
-            let modal = $('#travelModal');
+            let id = element.data('id');
 
-            modal.find('[name="travel_id"]').val(element.data('id'));
-            modal.find('[name="is_deleted"]').val(element.data('is_deleted'));
-            modal.find('[name="travel_name"]').val(element.data('travel-name'));
-            modal.find('[name="start_date"]').val(element.data('start-date'));
-            modal.find('[name="end_date"]').val(element.data('end-date'));
-
-            modal.addClass('show');
-            $('body').css('overflow', 'hidden');
+            window.location.href = `travels/${id}`;
         })
     }
 })(jQuery);

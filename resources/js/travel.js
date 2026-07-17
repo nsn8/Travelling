@@ -126,3 +126,7 @@ function closeModal(modal) {
         modal.removeClass('show hiding');
     });
 }
+
+$('.return-button-container').on('click', function () {
+    window.location.href = '/';
+})
