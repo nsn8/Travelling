@@ -34,3 +34,15 @@
     @include('includes.create-document-dialog')
     @include('includes.delete-document-dialog')
 @endsection
+
+@section('scripts')
+    @parent
+    @vite(['resources/js/components/document-element.js'])
+    @vite(['resources/js/travel.js'])
+@endsection
+
+@section('styles')
+    @parent
+    @vite(['resources/css/components/document-element.css'])
+    @vite(['resources/css/travel.css'])
+@endsection

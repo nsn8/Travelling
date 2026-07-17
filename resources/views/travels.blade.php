@@ -30,3 +30,15 @@
     @include('includes.create-travel-dialog')
     @include('includes.delete-travel-dialog')
 @endsection
+
+@section('scripts')
+    @parent
+    @vite(['resources/js/components/travel-element.js'])
+    @vite(['resources/js/travels.js'])
+@endsection
+
+@section('styles')
+    @parent
+    @vite(['resources/css/components/travel-element.css'])
+    @vite(['resources/css/travels.css'])
+@endsection
