@@ -39,6 +39,9 @@ function renderDocumentsList(list)
             case 'train':
                 documentElement.initTrainElement(documentData);
                 break;
+            case 'flight':
+                documentElement.initFlightElement(documentData);
+                break;
         }
 
         lastInsertedElement.after(documentElement);
@@ -85,6 +88,20 @@ function clearModal(modal)
     modal.find('[name="departure_station"]').val('');
     modal.find('[name="seat_number"]').val('');
     modal.find('[name="transport_name"]').val('');
+
+    modal.find('[name="arrival_railway_station"]').val('');
+    modal.find('[name="cart_number"]').val('');
+    modal.find('[name="departure_railway_station"]').val('');
+    modal.find('[name="place_number"]').val('');
+
+    modal.find('[name="arrival_airport"]').val('');
+    modal.find('[name="departure_airport"]').val('');
+    modal.find('[name="luggage_max_weight"]').val('');
+    modal.find('[name="luggage_height"]').val('');
+    modal.find('[name="luggage_length"]').val('');
+    modal.find('[name="luggage_width"]').val('');
+    modal.find('[name="transport_name"]').val('');
+    modal.find('[name="luggage_included"]').prop('checked', false);
 }
 
 $('#save-document-button').on('click', async function () {

@@ -23,6 +23,7 @@ class DocumentsCollection extends Collection
         $result = $result->merge($this->initAccommodations());
         $result = $result->merge($this->initBusses());
         $result = $result->merge($this->initTrains());
+        $result = $result->merge($this->initFlights());
 
         $this->items = $result;
     }
@@ -55,6 +56,16 @@ class DocumentsCollection extends Collection
 
         $collection->map(function ($item) {
             $item->type = TransportTypes::TRAIN->value;
+        });
+
+        return $collection;
+    }
+
+    private function initFlights(): LaravelCollection {
+        $collection = new FlightsCollection($this->data)->getAll();
+
+        $collection->map(function ($item) {
+            $item->type = TransportTypes::FLIGHT->value;
         });
 
         return $collection;

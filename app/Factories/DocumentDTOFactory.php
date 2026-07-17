@@ -21,8 +21,8 @@ class DocumentDTOFactory
         if ($data['document_type'] == DocumentTypes::TRANSPORT->value) {
             $dto = match ($data['transport_type']) {
                 TransportTypes::FLIGHT->value => new FlightDTO($data),
-                TransportTypes::TRAIN->value => new TrainDTO($data),
-                TransportTypes::BUS->value => new BusDTO($data),
+                TransportTypes::TRAIN->value  => new TrainDTO($data),
+                TransportTypes::BUS->value    => new BusDTO($data),
             };
         }
 
