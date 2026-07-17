@@ -27,9 +27,16 @@ function renderDocumentsList(list)
     let lastInsertedElement = $('#add-document-button');
 
     Object.values(list).forEach((documentData) => {
+        console.log(documentData)
         const documentElement = $('<div>', {class: 'document-element'})
 
-        documentElement.initDocumentElement(documentData);
+        switch (documentData.type) {
+            case 'accommodation':
+                documentElement.initAccommodationElement(documentData);
+                break;
+            case 'bus':
+                documentElement.initBusElement(documentData);
+        }
 
         lastInsertedElement.after(documentElement);
 
@@ -47,16 +54,34 @@ $('#add-document-button').on('click', function () {
 
 function clearModal(modal)
 {
+    modal.find('#accommodation-info').show();
+    modal.find('#transport-info').hide();
+    modal.find('#bus-info').hide();
+    modal.find('#flight-info').hide();
+    modal.find('#train-info').hide();
+
     modal.find('[name="id"]').val('');
     modal.find('[name="name"]').val('');
-    ///@TODO: подставить проживание по-умолчанию
-    //modal.find('[name="document_type"]').val(element.data('name'));
+    modal.find('[name="document_type"]').val('accommodation');
     modal.find('[name="accommodation_name"]').val('');
     modal.find('[name="accommodation_country"]').val('');
     modal.find('[name="accommodation_city"]').val('');
     modal.find('[name="accommodation_address"]').val('');
     modal.find('[name="check_in_date"]').val('');
     modal.find('[name="check_out_date"]').val('');
+
+    modal.find('[name="transport_type"]').val('');
+    modal.find('[name="arrival_city"]').val('');
+    modal.find('[name="arrival_country"]').val('');
+    modal.find('[name="arrival_date"]').val('');
+    modal.find('[name="arrival_station"]').val('');
+    modal.find('[name="bus_number"]').val('');
+    modal.find('[name="departure_city"]').val('');
+    modal.find('[name="departure_country"]').val('');
+    modal.find('[name="departure_date"]').val('');
+    modal.find('[name="departure_station"]').val('');
+    modal.find('[name="seat_number"]').val('');
+    modal.find('[name="transport_name"]').val('');
 }
 
 $('#save-document-button').on('click', async function () {
