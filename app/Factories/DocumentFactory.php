@@ -8,6 +8,7 @@ use App\Enums\TransportTypes;
 use App\Models\Documents\Accommodation;
 use App\Models\Documents\Bus;
 use App\Models\Documents\Document;
+use App\Models\Documents\Train;
 
 class DocumentFactory
 {
@@ -15,7 +16,8 @@ class DocumentFactory
     {
         $document = match ($dto->getType()) {
             DocumentTypes::ACCOMMODATION->value => new Accommodation($dto->getId()),
-            TransportTypes::BUS->value => new Bus($dto->getId()),
+            TransportTypes::BUS->value          => new Bus($dto->getId()),
+            TransportTypes::TRAIN->value        => new Train($dto->getId()),
         };
 
         if (!$forDelete) {

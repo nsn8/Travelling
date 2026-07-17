@@ -3,7 +3,7 @@
         <label>Способ перемещения</label>
         <select name="transport_type">
 {{--            <option value="flight">Самолет</option>--}}
-{{--            <option value="train">Поезд</option>--}}
+            <option value="train">Поезд</option>
             <option value="bus">Автобус</option>
         </select>
     </div>
@@ -36,6 +36,6 @@
         <input type="datetime-local" name="arrival_date" />
     </div>
 {{--    @include('includes.documents.transports.flight-info')--}}
-{{--    @include('includes.documents.transports.train-info')--}}
+    @include('includes.documents.transports.train-info')
     @include('includes.documents.transports.bus-info')
 </div>

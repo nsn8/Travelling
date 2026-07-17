@@ -27,7 +27,6 @@ function renderDocumentsList(list)
     let lastInsertedElement = $('#add-document-button');
 
     Object.values(list).forEach((documentData) => {
-        console.log(documentData)
         const documentElement = $('<div>', {class: 'document-element'})
 
         switch (documentData.type) {
@@ -36,6 +35,10 @@ function renderDocumentsList(list)
                 break;
             case 'bus':
                 documentElement.initBusElement(documentData);
+                break;
+            case 'train':
+                documentElement.initTrainElement(documentData);
+                break;
         }
 
         lastInsertedElement.after(documentElement);
@@ -70,7 +73,7 @@ function clearModal(modal)
     modal.find('[name="check_in_date"]').val('');
     modal.find('[name="check_out_date"]').val('');
 
-    modal.find('[name="transport_type"]').val('');
+    modal.find('[name="transport_type"]').val('bus');
     modal.find('[name="arrival_city"]').val('');
     modal.find('[name="arrival_country"]').val('');
     modal.find('[name="arrival_date"]').val('');
@@ -134,13 +137,17 @@ $('[name="document_type"]').on('change', function () {
 
     $('.document-info').hide();
     $(`#${type}-info`).toggle();
+
+    if (type === 'transport') {
+        $('#bus-info').show();
+    }
 })
 
 $('[name="transport_type"]').on('change', function () {
     let type = $(this).val();
 
     $('.transport-type-info').hide();
-    $(`#${type}-info`).toggle();
+    $(`#${type}-info`).show();
 })
 
 function closeModal(modal) {
