@@ -37,7 +37,8 @@
 
 @section('scripts')
     @parent
-    @vite(['resources/js/components/document-element.js'])
+    @vite(['resources/js/components/accommodation-element.js'])
+    @vite(['resources/js/components/bus-element.js'])
     @vite(['resources/js/travel.js'])
 @endsection
 

@@ -1,5 +1,5 @@
 (function ($) {
-    $.fn.initDocumentElement = function (documentData) {
+    $.fn.initAccommodationElement = function (documentData) {
         const element = $(this);
 
         element.data('name', documentData.name);
@@ -14,7 +14,7 @@
         const documentUpperRow = $('<div>', {class: 'document-upper-row'});
 
         const elementType = $('<h4>', {class: 'document-type'});
-        elementType.html(documentData.type ?? 'Проживание');
+        elementType.html('Проживание');
         documentUpperRow.append(elementType);
 
         const deleteIconContainer = $('<div>', {class: 'delete-document-icon-container'})
@@ -49,9 +49,14 @@
 
             let modal = $('#documentModal');
 
+            modal.find('#accommodation-info').show();
+            modal.find('#transport-info').hide();
+            modal.find('#bus-info').hide();
+            modal.find('#flight-info').hide();
+            modal.find('#train-info').hide();
+
             modal.find('[name="name"]').val(element.data('name'));
-            ///@TODO: выбор нужной опции в типе
-            //modal.find('[name="document_type"]').val(element.data('name'));
+            modal.find('[name="document_type"]').val('accommodation');
             modal.find('[name="accommodation_name"]').val(element.data('accommodation_name'));
             modal.find('[name="accommodation_country"]').val(element.data('accommodation_country'));
             modal.find('[name="accommodation_city"]').val(element.data('accommodation_city'));
