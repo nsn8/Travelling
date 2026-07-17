@@ -2,7 +2,7 @@
     <div class="modal-block">
         <label>Способ перемещения</label>
         <select name="transport_type">
-{{--            <option value="flight">Самолет</option>--}}
+            <option value="flight">Самолет</option>
             <option value="train">Поезд</option>
             <option value="bus">Автобус</option>
         </select>
@@ -35,7 +35,7 @@
         <label>Дата и время прибытия</label>
         <input type="datetime-local" name="arrival_date" />
     </div>
-{{--    @include('includes.documents.transports.flight-info')--}}
+    @include('includes.documents.transports.flight-info')
     @include('includes.documents.transports.train-info')
     @include('includes.documents.transports.bus-info')
 </div>
