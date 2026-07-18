@@ -29,6 +29,14 @@
         <div id="documents-list-upper-row">
             <h2>Документы</h2>
             <div class="button" id="add-document-button">+ Добавить новый документ</div>
+            <div id="filters-bar">
+                <div class="document-filter document-filter-active" data-filter="accommodation">Проживания</div>
+                <div class="document-filter document-filter-active" data-filter="bus">Автобусы</div>
+                <div class="document-filter document-filter-active" data-filter="train">Поезда</div>
+                <div class="document-filter document-filter-active" data-filter="flight">Перелеты</div>
+                <div class="document-filter document-filter-active" data-filter="ship">Корабли</div>
+                <input type="text" class="document-search" name="search" placeholder="поиск">
+            </div>
             <div id="documents-list"></div>
         </div>
     </div>

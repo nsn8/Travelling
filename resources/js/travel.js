@@ -4,7 +4,42 @@ $(document).ready(async () => {
     renderDocumentsList(list);
 });
 
-async function fetchDocumentsList()
+$('#filters-bar').on('click', async function (event) {
+    const target = $(event.target);
+
+    if (!target.hasClass('document-filter')) {
+        return;
+    }
+
+    if (target.hasClass('document-filter-active') && $('.document-filter-active').length !== 1) {
+        target.removeClass('document-filter-active');
+    } else {
+        target.addClass('document-filter-active');
+    }
+
+    await refreshDocumentsList();
+});
+
+$('[name="search"]').on('input', async function () {
+    await refreshDocumentsList();
+})
+
+async function refreshDocumentsList() {
+    let activeFilters = [];
+    let activeFilterElements = $('.document-filter-active');
+
+    activeFilterElements.each(function () {
+        activeFilters.push($(this).data('filter'));
+    });
+
+    let search = $('[name="search"]').val();
+
+    let list = await fetchDocumentsList(activeFilters, search);
+
+    renderDocumentsList(list);
+}
+
+async function fetchDocumentsList(activeFilters = ['accommodation', 'bus', 'train', 'flight', 'ship'], search = '')
 {
     let travelId = $('[name="travel_id"]').val();
 
@@ -12,7 +47,9 @@ async function fetchDocumentsList()
         url: '/documents/list',
         type: 'GET',
         data: {
-            travel_id: travelId
+            travel_id: travelId,
+            active_filters: activeFilters,
+            search: search
         },
         success: function (response) {
             return response;
@@ -125,7 +162,7 @@ $('#save-document-button').on('click', async function () {
 
     let modal = $('#documentModal');
 
-    closeModal(modal)
+    closeModal(modal);
 
     let list = await fetchDocumentsList();
 

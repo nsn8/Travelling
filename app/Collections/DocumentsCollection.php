@@ -9,6 +9,14 @@ use \Illuminate\Support\Collection as LaravelCollection;
 
 class DocumentsCollection extends Collection
 {
+    private array $mapFilterToCollection = [
+        DocumentTypes::ACCOMMODATION->value => AccommodationsCollection::class,
+        TransportTypes::BUS->value          => BusesCollection::class,
+        TransportTypes::TRAIN->value        => TrainsCollection::class,
+        TransportTypes::FLIGHT->value       => FlightsCollection::class,
+        TransportTypes::SHIP->value         => ShipsCollection::class
+    ];
+
     public function __construct(DocumentsListDTO $dto)
     {
         $this->data = $dto;
@@ -20,66 +28,28 @@ class DocumentsCollection extends Collection
     {
         $result = collect();
 
-        $result = $result->merge($this->initAccommodations());
-        $result = $result->merge($this->initBusses());
-        $result = $result->merge($this->initTrains());
-        $result = $result->merge($this->initFlights());
-        $result = $result->merge($this->initShips());
+        foreach ($this->data->getActiveFilters() as $filter) {
+            $result = $result->merge($this->initCollection($filter));
+        }
 
         $this->items = $result;
     }
 
-    private function initAccommodations(): LaravelCollection
+    private function initCollection(string $type): LaravelCollection
     {
-        $collection = new AccommodationsCollection($this->data)->getAll();
+        /** @var Collection $collection */
+        $collection = new $this->mapFilterToCollection[$type]($this->data);
 
-        $collection->map(function ($item) {
-            $item->type = DocumentTypes::ACCOMMODATION->value;
+        if (!empty($this->data->getSearch())) {
+            $collection->setSearchCondition($this->data->getSearch());
+        }
+
+        $items = $collection->getAll();
+
+        $items->map(function ($item) use ($type) {
+            $item->type = $type;
         });
 
-        return $collection;
-    }
-
-    private function initBusses(): LaravelCollection
-    {
-        $collection = new BusesCollection($this->data)->getAll();
-
-        $collection->map(function ($item) {
-            $item->type = TransportTypes::BUS->value;
-        });
-
-        return $collection;
-    }
-
-    private function initTrains(): LaravelCollection
-    {
-        $collection = new TrainsCollection($this->data)->getAll();
-
-        $collection->map(function ($item) {
-            $item->type = TransportTypes::TRAIN->value;
-        });
-
-        return $collection;
-    }
-
-    private function initFlights(): LaravelCollection {
-        $collection = new FlightsCollection($this->data)->getAll();
-
-        $collection->map(function ($item) {
-            $item->type = TransportTypes::FLIGHT->value;
-        });
-
-        return $collection;
-    }
-
-    private function initShips(): LaravelCollection
-    {
-        $collection = new ShipsCollection($this->data)->getAll();
-
-        $collection->map(function ($item) {
-            $item->type = TransportTypes::SHIP->value;
-        });
-
-        return $collection;
+        return $items;
     }
 }
