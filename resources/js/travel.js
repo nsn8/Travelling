@@ -24,7 +24,7 @@ function renderDocumentsList(list)
 {
     $('.document-element').remove();
 
-    let lastInsertedElement = $('#add-document-button');
+    let container = $('#documents-list');
 
     Object.values(list).forEach((documentData) => {
         const documentElement = $('<div>', {class: 'document-element'})
@@ -42,11 +42,12 @@ function renderDocumentsList(list)
             case 'flight':
                 documentElement.initFlightElement(documentData);
                 break;
+            case 'ship':
+                documentElement.initShipElement(documentData);
+                break;
         }
 
-        lastInsertedElement.after(documentElement);
-
-        lastInsertedElement = documentElement;
+        container.append(documentElement);
     });
 }
 
@@ -102,6 +103,12 @@ function clearModal(modal)
     modal.find('[name="luggage_width"]').val('');
     modal.find('[name="transport_name"]').val('');
     modal.find('[name="luggage_included"]').prop('checked', false);
+
+    modal.find('[name="arrival_port"]').val('');
+    modal.find('[name="departure_port"]').val('');
+    modal.find('[name="deck_number"]').val('');
+    modal.find('[name="cabin_number"]').val('');
+    modal.find('[name="place_number"]').val('');
 }
 
 $('#save-document-button').on('click', async function () {
