@@ -2,14 +2,20 @@
 
 namespace App\Collections;
 
-use App\Collections\Collection;
 use App\DTO\Documents\DocumentsListDTO;
-use App\DTO\DTO;
-use Illuminate\Support\Facades\DB;
+use App\Enums\DocumentTypes;
+use App\Enums\TransportTypes;
+use \Illuminate\Support\Collection as LaravelCollection;
 
 class DocumentsCollection extends Collection
 {
-    private AccommodationsCollection $accommodationsCollection;
+    private array $mapFilterToCollection = [
+        DocumentTypes::ACCOMMODATION->value => AccommodationsCollection::class,
+        TransportTypes::BUS->value          => BusesCollection::class,
+        TransportTypes::TRAIN->value        => TrainsCollection::class,
+        TransportTypes::FLIGHT->value       => FlightsCollection::class,
+        TransportTypes::SHIP->value         => ShipsCollection::class
+    ];
 
     public function __construct(DocumentsListDTO $dto)
     {
@@ -20,8 +26,30 @@ class DocumentsCollection extends Collection
 
     public function init(): void
     {
-        $this->accommodationsCollection = new AccommodationsCollection($this->data);
+        $result = collect();
 
-        $this->items = $this->accommodationsCollection->getAll();
+        foreach ($this->data->getActiveFilters() as $filter) {
+            $result = $result->merge($this->initCollection($filter));
+        }
+
+        $this->items = $result;
+    }
+
+    private function initCollection(string $type): LaravelCollection
+    {
+        /** @var Collection $collection */
+        $collection = new $this->mapFilterToCollection[$type]($this->data);
+
+        if (!empty($this->data->getSearch())) {
+            $collection->setSearchCondition($this->data->getSearch());
+        }
+
+        $items = $collection->getAll();
+
+        $items->map(function ($item) use ($type) {
+            $item->type = $type;
+        });
+
+        return $items;
     }
 }

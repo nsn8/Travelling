@@ -11,10 +11,10 @@ class FlightRules implements DocumentRulesInterface
         return [
             'departure_airport'  => 'required|string',
             'arrival_airport'    => 'required|string',
-            'luggage_max_weight' => 'integer',
-            'luggage_width'      => 'integer',
-            'luggage_height'     => 'integer',
-            'luggage_length'     => 'integer'
+            'luggage_max_weight' => 'integer|nullable',
+            'luggage_width'      => 'integer|nullable',
+            'luggage_height'     => 'integer|nullable',
+            'luggage_length'     => 'integer|nullable',
         ];
     }
 }

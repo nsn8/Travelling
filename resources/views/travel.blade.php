@@ -25,10 +25,19 @@
     <div id="route">
         <h2>Маршрут</h2>
     </div>
-    <div id="documents-list">
+    <div id="documents-list-container">
         <div id="documents-list-upper-row">
             <h2>Документы</h2>
             <div class="button" id="add-document-button">+ Добавить новый документ</div>
+            <div id="filters-bar">
+                <div class="document-filter document-filter-active" data-filter="accommodation">Проживания</div>
+                <div class="document-filter document-filter-active" data-filter="bus">Автобусы</div>
+                <div class="document-filter document-filter-active" data-filter="train">Поезда</div>
+                <div class="document-filter document-filter-active" data-filter="flight">Перелеты</div>
+                <div class="document-filter document-filter-active" data-filter="ship">Корабли</div>
+                <input type="text" class="document-search" name="search" placeholder="поиск">
+            </div>
+            <div id="documents-list"></div>
         </div>
     </div>
     @include('includes.create-document-dialog')
@@ -37,7 +46,11 @@
 
 @section('scripts')
     @parent
-    @vite(['resources/js/components/document-element.js'])
+    @vite(['resources/js/components/accommodation-element.js'])
+    @vite(['resources/js/components/bus-element.js'])
+    @vite(['resources/js/components/train-element.js'])
+    @vite(['resources/js/components/flight-element.js'])
+    @vite(['resources/js/components/ship-element.js'])
     @vite(['resources/js/travel.js'])
 @endsection
 
