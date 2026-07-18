@@ -22,6 +22,7 @@ export default defineConfig({
                 'resources/js/components/bus-element.js',
                 'resources/js/components/train-element.js',
                 'resources/js/components/flight-element.js',
+                'resources/js/components/ship-element.js',
             ],
             refresh: true,
         }),

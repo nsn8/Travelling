@@ -2,9 +2,10 @@
     <div class="modal-block">
         <label>Способ перемещения</label>
         <select name="transport_type">
+            <option value="bus">Автобус</option>
             <option value="flight">Самолет</option>
             <option value="train">Поезд</option>
-            <option value="bus">Автобус</option>
+            <option value="ship">Корабль</option>
         </select>
     </div>
     <div class="modal-block">
@@ -38,4 +39,5 @@
     @include('includes.documents.transports.flight-info')
     @include('includes.documents.transports.train-info')
     @include('includes.documents.transports.bus-info')
+    @include('includes.documents.transports.ship-info')
 </div>

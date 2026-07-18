@@ -9,6 +9,7 @@ use App\Models\Documents\Accommodation;
 use App\Models\Documents\Bus;
 use App\Models\Documents\Document;
 use App\Models\Documents\Flight;
+use App\Models\Documents\Ship;
 use App\Models\Documents\Train;
 
 class DocumentFactory
@@ -20,6 +21,7 @@ class DocumentFactory
             TransportTypes::BUS->value          => new Bus($dto->getId()),
             TransportTypes::TRAIN->value        => new Train($dto->getId()),
             TransportTypes::FLIGHT->value       => new Flight($dto->getId()),
+            TransportTypes::SHIP->value         => new Ship($dto->getId()),
         };
 
         if (!$forDelete) {

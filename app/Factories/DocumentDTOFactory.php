@@ -6,6 +6,7 @@ use App\DTO\Documents\AccommodationDTO;
 use App\DTO\Documents\BusDTO;
 use App\DTO\Documents\DocumentDTO;
 use App\DTO\Documents\FlightDTO;
+use App\DTO\Documents\ShipDTO;
 use App\DTO\Documents\TrainDTO;
 use App\Enums\DocumentTypes;
 use App\Enums\TransportTypes;
@@ -23,6 +24,7 @@ class DocumentDTOFactory
                 TransportTypes::FLIGHT->value => new FlightDTO($data),
                 TransportTypes::TRAIN->value  => new TrainDTO($data),
                 TransportTypes::BUS->value    => new BusDTO($data),
+                TransportTypes::SHIP->value   => new ShipDTO($data),
             };
         }
 

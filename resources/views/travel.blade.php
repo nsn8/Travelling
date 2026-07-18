@@ -25,10 +25,11 @@
     <div id="route">
         <h2>Маршрут</h2>
     </div>
-    <div id="documents-list">
+    <div id="documents-list-container">
         <div id="documents-list-upper-row">
             <h2>Документы</h2>
             <div class="button" id="add-document-button">+ Добавить новый документ</div>
+            <div id="documents-list"></div>
         </div>
     </div>
     @include('includes.create-document-dialog')
@@ -41,6 +42,7 @@
     @vite(['resources/js/components/bus-element.js'])
     @vite(['resources/js/components/train-element.js'])
     @vite(['resources/js/components/flight-element.js'])
+    @vite(['resources/js/components/ship-element.js'])
     @vite(['resources/js/travel.js'])
 @endsection
 

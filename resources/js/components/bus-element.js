@@ -60,6 +60,7 @@
             modal.find('#bus-info').show();
             modal.find('#flight-info').hide();
             modal.find('#train-info').hide();
+            modal.find('#ship-info').hide();
 
             modal.find('[name="name"]').val(element.data('name'));
             modal.find('[name="document_type"]').val('transport');
