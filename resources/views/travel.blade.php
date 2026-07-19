@@ -46,16 +46,16 @@
 
 @section('scripts')
     @parent
-    @vite(['resources/js/components/accommodation-element.js'])
-    @vite(['resources/js/components/bus-element.js'])
-    @vite(['resources/js/components/train-element.js'])
-    @vite(['resources/js/components/flight-element.js'])
-    @vite(['resources/js/components/ship-element.js'])
+    @vite(['resources/js/components/document/accommodation-element.js'])
+    @vite(['resources/js/components/document/bus-element.js'])
+    @vite(['resources/js/components/document/train-element.js'])
+    @vite(['resources/js/components/document/flight-element.js'])
+    @vite(['resources/js/components/document/ship-element.js'])
     @vite(['resources/js/travel.js'])
 @endsection
 
 @section('styles')
     @parent
-    @vite(['resources/css/components/document-element.css'])
+    @vite(['resources/css/components/document/document-element.css'])
     @vite(['resources/css/travel.css'])
 @endsection
