@@ -224,3 +224,18 @@ function closeModal(modal) {
 $('.return-button-container').on('click', function () {
     window.location.href = '/';
 })
+
+$('#compile-route-button').on('click', async function () {
+    let travelId = $('[name="travel_id"]').val();
+
+    $.ajax({
+        url: '/documents/timeline',
+        method: 'GET',
+        data: {
+            travel_id: travelId
+        },
+        success: function (response) {
+            $('#route-timeline').initTimeline(response);
+        }
+    })
+});

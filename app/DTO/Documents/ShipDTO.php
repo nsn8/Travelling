@@ -33,7 +33,7 @@ class ShipDTO extends TransportDTO
         $this->arrivalPort = $data['arrival_port'] ?? null;
         $this->deckNumber = $data['deck_number'] ?? null;
         $this->cabinNumber = $data['cabin_number'] ?? null;
-        $this->placeNumber = $data['place_number'] ?? null;
+        $this->placeNumber = $data['cabin_place_number'] ?? null;
 
         $this->setType(TransportTypes::SHIP->value);
     }

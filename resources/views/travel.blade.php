@@ -22,8 +22,10 @@
             <input class="travel-info-input" type="date" name="end_date" value="{{ $end_date }}"/>
         </div>
     </div>
-    <div id="route">
+    <div id="route-container">
         <h2>Маршрут</h2>
+        <div class="button" id="compile-route-button">Построить маршрут</div>
+        <div id="route-timeline"></div>
     </div>
     <div id="documents-list-container">
         <div id="documents-list-upper-row">
@@ -52,10 +54,25 @@
     @vite(['resources/js/components/document/flight-element.js'])
     @vite(['resources/js/components/document/ship-element.js'])
     @vite(['resources/js/travel.js'])
+    @vite(['resources/js/components/timeline/timeline.js'])
+    @vite(['resources/js/components/timeline/events/bus-departure-event.js'])
+    @vite(['resources/js/components/timeline/events/bus-arrival-event.js'])
+    @vite(['resources/js/components/timeline/events/flight-departure-event.js'])
+    @vite(['resources/js/components/timeline/events/flight-arrival-event.js'])
+    @vite(['resources/js/components/timeline/events/train-departure-event.js'])
+    @vite(['resources/js/components/timeline/events/train-arrival-event.js'])
+    @vite(['resources/js/components/timeline/events/ship-departure-event.js'])
+    @vite(['resources/js/components/timeline/events/ship-arrival-event.js'])
+    @vite(['resources/js/components/timeline/events/accommodation-check-in-event.js'])
+    @vite(['resources/js/components/timeline/events/accommodation-check-out-event.js'])
+    @vite(['resources/js/components/timeline/elements/element-header.js'])
+    @vite(['resources/js/components/timeline/elements/element-dates-container.js'])
+    @vite(['resources/js/components/timeline/elements/element-label.js'])
 @endsection
 
 @section('styles')
     @parent
     @vite(['resources/css/components/document/document-element.css'])
     @vite(['resources/css/travel.css'])
+    @vite(['resources/css/components/timeline/timeline.css'])
 @endsection

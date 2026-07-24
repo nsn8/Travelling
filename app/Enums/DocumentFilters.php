@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Enums;
+
+enum DocumentFilters: string
+{
+    case ACCOMMODATION = 'accommodation';
+    case FLIGHT = 'flight';
+    case TRAIN = 'train';
+    case BUS = 'bus';
+    case SHIP = 'ship';
+
+    public static function values(): array
+    {
+        return array_map(fn(self $case) => $case->value, self::cases());
+    }
+}

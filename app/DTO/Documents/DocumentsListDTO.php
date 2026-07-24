@@ -13,8 +13,8 @@ use App\DTO\Travels\ListDTO;
 
 class DocumentsListDTO extends ListDTO
 {
-    protected array $activeFilters;
-    protected string $search;
+    protected ?array $activeFilters;
+    protected ?string $search;
 
     public function __construct(array $data)
     {
