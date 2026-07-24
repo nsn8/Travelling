@@ -25,7 +25,9 @@
     <div id="route-container">
         <h2>Маршрут</h2>
         <div class="button" id="compile-route-button">Построить маршрут</div>
-        <div id="route-timeline"></div>
+        <div id="route-timeline">
+            <svg id="connection-svg"></svg>
+        </div>
     </div>
     <div id="documents-list-container">
         <div id="documents-list-upper-row">
@@ -68,6 +70,16 @@
     @vite(['resources/js/components/timeline/elements/element-header.js'])
     @vite(['resources/js/components/timeline/elements/element-dates-container.js'])
     @vite(['resources/js/components/timeline/elements/element-label.js'])
+    @vite(['resources/js/components/timeline/markers/flight-departure-marker.js'])
+    @vite(['resources/js/components/timeline/markers/flight-arrival-marker.js'])
+    @vite(['resources/js/components/timeline/markers/bus-departure-marker.js'])
+    @vite(['resources/js/components/timeline/markers/bus-arrival-marker.js'])
+    @vite(['resources/js/components/timeline/markers/train-departure-marker.js'])
+    @vite(['resources/js/components/timeline/markers/train-arrival-marker.js'])
+    @vite(['resources/js/components/timeline/markers/ship-departure-marker.js'])
+    @vite(['resources/js/components/timeline/markers/ship-arrival-marker.js'])
+    @vite(['resources/js/components/timeline/markers/accommodation-check-in-marker.js'])
+    @vite(['resources/js/components/timeline/markers/accommodation-check-out-marker.js'])
 @endsection
 
 @section('styles')

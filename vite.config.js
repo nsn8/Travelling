@@ -38,7 +38,16 @@ export default defineConfig({
                 'resources/js/components/timeline/elements/element-header.js',
                 'resources/js/components/timeline/elements/element-dates-container.js',
                 'resources/js/components/timeline/elements/element-label.js',
-
+                'resources/js/components/timeline/markers/flight-departure-marker.js',
+                'resources/js/components/timeline/markers/flight-arrival-marker.js',
+                'resources/js/components/timeline/markers/bus-departure-marker.js',
+                'resources/js/components/timeline/markers/bus-arrival-marker.js',
+                'resources/js/components/timeline/markers/train-departure-marker.js',
+                'resources/js/components/timeline/markers/train-arrival-marker.js',
+                'resources/js/components/timeline/markers/ship-departure-marker.js',
+                'resources/js/components/timeline/markers/ship-arrival-marker.js',
+                'resources/js/components/timeline/markers/accommodation-check-in-marker.js',
+                'resources/js/components/timeline/markers/accommodation-check-out-marker.js'
             ],
             refresh: true,
         }),
