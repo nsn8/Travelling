@@ -47,7 +47,12 @@ export default defineConfig({
                 'resources/js/components/timeline/markers/ship-departure-marker.js',
                 'resources/js/components/timeline/markers/ship-arrival-marker.js',
                 'resources/js/components/timeline/markers/accommodation-check-in-marker.js',
-                'resources/js/components/timeline/markers/accommodation-check-out-marker.js'
+                'resources/js/components/timeline/markers/accommodation-check-out-marker.js',
+                'resources/js/components/timeline/element-factory.js',
+                'resources/js/components/timeline/marker-factory.js',
+                'resources/js/components/timeline/hover-handler.js',
+                'resources/js/components/timeline/markers-connector.js',
+                'resources/js/components/timeline/line-drawer.js',
             ],
             refresh: true,
         }),

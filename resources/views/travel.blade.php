@@ -80,6 +80,11 @@
     @vite(['resources/js/components/timeline/markers/ship-arrival-marker.js'])
     @vite(['resources/js/components/timeline/markers/accommodation-check-in-marker.js'])
     @vite(['resources/js/components/timeline/markers/accommodation-check-out-marker.js'])
+    @vite(['resources/js/components/timeline/element-factory.js'])
+    @vite(['resources/js/components/timeline/marker-factory.js'])
+    @vite(['resources/js/components/timeline/hover-handler.js'])
+    @vite(['resources/js/components/timeline/markers-connector.js'])
+    @vite(['resources/js/components/timeline/line-drawer.js'])
 @endsection
 
 @section('styles')
