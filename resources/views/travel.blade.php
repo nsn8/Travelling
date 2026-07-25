@@ -22,13 +22,6 @@
             <input class="travel-info-input" type="date" name="end_date" value="{{ $end_date }}"/>
         </div>
     </div>
-    <div id="route-container">
-        <h2>Маршрут</h2>
-        <div class="button" id="compile-route-button">Построить маршрут</div>
-        <div id="route-timeline">
-            <svg id="connection-svg"></svg>
-        </div>
-    </div>
     <div id="documents-list-container">
         <div id="documents-list-upper-row">
             <h2>Документы</h2>
@@ -42,6 +35,13 @@
                 <input type="text" class="document-search" name="search" placeholder="поиск">
             </div>
             <div id="documents-list"></div>
+        </div>
+    </div>
+    <div id="route-container">
+        <h2>Маршрут</h2>
+        <div class="button" id="compile-route-button">Построить маршрут</div>
+        <div id="route-timeline">
+            <svg id="connection-svg"></svg>
         </div>
     </div>
     @include('includes.create-document-dialog')
@@ -67,6 +67,7 @@
     @vite(['resources/js/components/timeline/events/ship-arrival-event.js'])
     @vite(['resources/js/components/timeline/events/accommodation-check-in-event.js'])
     @vite(['resources/js/components/timeline/events/accommodation-check-out-event.js'])
+    @vite(['resources/js/components/timeline/events/date-event.js'])
     @vite(['resources/js/components/timeline/elements/element-header.js'])
     @vite(['resources/js/components/timeline/elements/element-dates-container.js'])
     @vite(['resources/js/components/timeline/elements/element-label.js'])
@@ -83,6 +84,7 @@
     @vite(['resources/js/components/timeline/element-factory.js'])
     @vite(['resources/js/components/timeline/marker-factory.js'])
     @vite(['resources/js/components/timeline/hover-handler.js'])
+    @vite(['resources/js/components/timeline/date-hover-handler.js'])
     @vite(['resources/js/components/timeline/markers-connector.js'])
     @vite(['resources/js/components/timeline/line-drawer.js'])
 @endsection

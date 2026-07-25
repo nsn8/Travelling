@@ -14,4 +14,5 @@ enum TimelineEventTypes: string
     case FLIGHT_ARRIVAL = 'flight_arrival';
     case SHIP_DEPARTURE = 'ship_departure';
     case SHIP_ARRIVAL = 'ship_arrival';
+    case DATE_SEPARATOR = 'date_separator';
 }

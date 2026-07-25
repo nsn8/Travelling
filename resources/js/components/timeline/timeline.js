@@ -10,8 +10,13 @@
             container.append(eventMarker);
             container.append(eventElement);
 
-            eventElement.handleHovering();
-            eventMarker.handleHovering();
+            if (eventElement.data('document') !== 'date_separator') {
+                eventElement.handleHovering();
+                eventMarker.handleHovering();
+            } else {
+                eventElement.handleDateHovering();
+                eventMarker.handleDateHovering();
+            }
         });
 
         container.connectMarkers();

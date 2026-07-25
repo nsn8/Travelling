@@ -1,7 +1,9 @@
 (function ($) {
     $.fn.connectMarkers = function () {
-        const markers = $('.timeline-event-marker');
-        const groups = {};
+        const markers = $('.timeline-event-marker').filter(function () {
+            return $(this).data('document') !== 'date_separator';
+        });
+        let groups = {};
 
         markers.each(function () {
             const marker = $(this);

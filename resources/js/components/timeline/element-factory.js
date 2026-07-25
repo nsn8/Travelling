@@ -2,6 +2,7 @@
     $.createEvent = function (event) {
         let eventElement = $('<div>', {class: 'timeline-event'});
         eventElement.data('document', event.document);
+        eventElement.data('date', event.date);
 
         switch (event.type) {
             case 'bus_departure':
@@ -35,7 +36,7 @@
                 eventElement.initCheckOut(event);
                 break;
             default:
-                eventElement.html(event.type);
+                eventElement.initDateSeparator(event);
                 break;
         }
 

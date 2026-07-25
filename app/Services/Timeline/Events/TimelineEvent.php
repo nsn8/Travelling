@@ -21,7 +21,7 @@ abstract class TimelineEvent
     protected string $time;
     protected string $name;
     protected string $type;
-    protected string $document;
+    protected ?string $document;
 
     public function __construct(array $data)
     {
@@ -34,7 +34,7 @@ abstract class TimelineEvent
 
     protected abstract function init(array $data): void;
 
-    private function resolveDateTime(): void
+    protected function resolveDateTime(): void
     {
         $eventDate = Carbon::parse($this->rawDate);
 

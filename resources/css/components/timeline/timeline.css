@@ -35,6 +35,14 @@
     color: rgba(113, 182, 162, 0.96);
 }
 
+.date-event-hover {
+    background-color: rgba(230, 151, 81, 0.6);
+}
+
+.date-event-marker-hover {
+    color: rgba(228, 130, 39, 0.6);
+}
+
 .timeline-event-upper-row {
     width: 100%;
     display: flex;

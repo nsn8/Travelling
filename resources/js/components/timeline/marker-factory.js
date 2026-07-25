@@ -2,6 +2,7 @@
     $.createMarker = function (event) {
         let eventMarker = $('<div>', {class: 'timeline-event-marker'});
         eventMarker.data('document', event.document);
+        eventMarker.data('date', event.date);
 
         switch (event.type) {
             case 'bus_departure':

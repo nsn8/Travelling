@@ -4,6 +4,7 @@ namespace App\Services\Timeline;
 
 use App\Collections\DocumentsCollection;
 use App\Factories\TimelineEventsFactory;
+use App\Services\Timeline\Events\DateEvent;
 use Carbon\Carbon;
 
 class Timeline
@@ -36,7 +37,25 @@ class Timeline
             $events[] = TimelineEventsFactory::create((array) $document, false);
         }
 
-        return $this->sortEvents($events);
+        //return $this->sortEvents($events);
+        $dateEvents = $this->createDateEvents($events);
+
+        return $this->sortEvents(array_merge($dateEvents, $events));
+    }
+
+    private function createDateEvents(array $events): array
+    {
+        $dates = collect($events)->transform(function ($item) {
+            return $item->getDate();
+        });
+
+        $dateEvents = [];
+
+        foreach (array_unique($dates->toArray()) ?? [] as $date) {
+            $dateEvents[] = new DateEvent(['date' => $date]);
+        }
+
+        return $dateEvents;
     }
 
     private function sortEvents(array $events): array
