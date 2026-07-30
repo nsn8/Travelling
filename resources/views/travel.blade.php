@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="return-button-container">
-        <div class="button">Вернуться к путешествиям</div>
+        <div id="return-button" class="button">Вернуться к путешествиям</div>
     </div>
     <div id="travel-info">
         <input type="hidden" name="travel_id" value="{{ $id }}">
@@ -26,7 +26,7 @@
         <div id="documents-list-upper-row">
             <h2>Документы</h2>
             <div class="button" id="add-document-button">+ Добавить новый документ</div>
-            <div id="filters-bar">
+            <div id="document-filters-bar" class="filters-bar" style="display: none">
                 <div class="document-filter document-filter-active" data-filter="accommodation">Проживания</div>
                 <div class="document-filter document-filter-active" data-filter="bus">Автобусы</div>
                 <div class="document-filter document-filter-active" data-filter="train">Поезда</div>
@@ -39,7 +39,17 @@
     </div>
     <div id="route-container">
         <h2>Маршрут</h2>
-        <div class="button" id="compile-route-button">Построить маршрут</div>
+        <div id="timeline-filters-bar" class="filters-bar" style="display: none">
+            <div class="timeline-filter" data-filter="past">Прошедшие</div>
+            <div class="timeline-filter" data-filter="yesterday">Вчера</div>
+            <div class="timeline-filter" data-filter="today">Сегодня</div>
+            <div class="timeline-filter" data-filter="tomorrow">Завтра</div>
+            <div class="timeline-filter" data-filter="future">Предстоящие</div>
+            <div id="date-select-container">
+                <label>Дата</label>
+                <select class="timeline-filter" id="dates-field"></select>
+            </div>
+        </div>
         <div id="route-timeline">
             <svg id="connection-svg"></svg>
         </div>

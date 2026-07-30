@@ -3,6 +3,7 @@
 namespace App\Services\Timeline;
 
 use App\Collections\DocumentsCollection;
+use App\Enums\TimelineEventTypes;
 use App\Factories\TimelineEventsFactory;
 use App\Services\Timeline\Events\DateEvent;
 use Carbon\Carbon;
@@ -19,13 +20,44 @@ class Timeline
         $this->events = $this->createEvents();
     }
 
-    public function get(): array
+    public function getEvents(): array
     {
         $result = collect($this->events)->transform(function ($item) {
             return $item->getAsArray();
         });
 
         return $result->toArray();
+    }
+
+    public function getDates(): array
+    {
+        $result = collect($this->events)
+            ->filter(function ($item) {
+                return $item->getType() === TimelineEventTypes::DATE_SEPARATOR->value;
+            })
+            ->transform(function ($item) {
+                return $item->getDate();
+            });
+
+        return $result->toArray();
+    }
+
+    public function adjustDates(string $date, string $operator): void
+    {
+        $operatorsMap = [
+            '<' => fn($a, $b) => $a < $b,
+            '>' => fn($a, $b) => $a > $b,
+            '==' => fn($a, $b) => $a == $b,
+        ];
+
+        $this->events = collect($this->events)
+            ->filter(function ($item) use ($date, $operator, $operatorsMap) {
+                $itemDate = Carbon::parse($item->getDate());
+                $compareDate = Carbon::parse($date);
+
+                return $operatorsMap[$operator]($itemDate, $compareDate);
+            })
+            ->toArray();
     }
 
     private function createEvents(): array
@@ -37,7 +69,6 @@ class Timeline
             $events[] = TimelineEventsFactory::create((array) $document, false);
         }
 
-        //return $this->sortEvents($events);
         $dateEvents = $this->createDateEvents($events);
 
         return $this->sortEvents(array_merge($dateEvents, $events));

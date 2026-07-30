@@ -28,6 +28,15 @@ class DocumentsService extends Service
 
     public function compileTimeline(DocumentTimelineDTO $documentTimelineDTO): array
     {
-        return new Timeline(new DocumentsCollection($documentTimelineDTO))->get();
+        $timeline = new Timeline(new DocumentsCollection($documentTimelineDTO));
+
+        if (!empty($documentTimelineDTO->getDate())) {
+            $timeline->adjustDates($documentTimelineDTO->getDate(), $documentTimelineDTO->getOperator());
+        }
+
+        return [
+            'events' => $timeline->getEvents(),
+            'dates'  => $timeline->getDates(),
+        ];
     }
 }

@@ -2,6 +2,7 @@
     $.fn.initTimeline = function (timelineEvents) {
         const container = $(this);
         container.addClass('timeline-container');
+        container.children().not('#connection-svg').remove();
 
         Object.values(timelineEvents).forEach((event) => {
             const eventElement = $.createEvent(event);
@@ -19,6 +20,8 @@
             }
         });
 
-        container.connectMarkers();
+        if ($('.timeline-event').length > 0) {
+            container.connectMarkers();
+        }
     }
 })(jQuery);

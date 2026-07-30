@@ -16,7 +16,9 @@
 
         const svg = $('#connection-svg');
 
-        Object.values(groups).forEach((group, index) => {
+        const groupEntries = Object.values(groups).filter(group => group.length === 2);
+
+        groupEntries.forEach((group, index) => {
             const offsetX = (index % 2 === 0) ? -55 : 50;
 
             $.drawLine(group[0], group[1], svg, offsetX);

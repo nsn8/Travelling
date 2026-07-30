@@ -55,6 +55,11 @@ abstract class Collection
         $this->builder->whereRaw("LOWER({$searchColumn}) LIKE '%{$search}%'");
     }
 
+    protected function setDateCondition(string $date): void
+    {
+
+    }
+
     protected function setSorting(string $sortingField, string $sortingDirection): void
     {
         $this->builder->orderBy($sortingField, $sortingDirection);

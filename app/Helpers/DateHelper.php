@@ -41,6 +41,29 @@ class DateHelper
         return Carbon::now()->format($format);
     }
 
+    public static function getTodayDate(string $format = self::DATE_FORMAT): string
+    {
+        return Carbon::now()
+            ->startOfDay()
+            ->format($format);
+    }
+
+    public static function getYesterdayDate(string $format = self::DATE_FORMAT): string
+    {
+        return Carbon::now()
+            ->subDay()
+            ->startOfDay()
+            ->format($format);
+    }
+
+    public static function getTomorrowDate(string $format = self::DATE_FORMAT): string
+    {
+        return Carbon::now()
+            ->addDay()
+            ->startOfDay()
+            ->format($format);
+    }
+
     public static function dateToReadableDate(string $date): string
     {
         $date = Carbon::parse($date);
