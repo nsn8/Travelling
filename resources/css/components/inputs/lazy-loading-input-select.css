@@ -1,0 +1,13 @@
+.input-select-options-container {
+    background-color: #f8f1f1;
+    position: absolute;
+    z-index: 1;
+}
+
+.input-select-option {
+
+}
+
+.input-select-option:hover {
+    background-color: #cfcdcd;
+}

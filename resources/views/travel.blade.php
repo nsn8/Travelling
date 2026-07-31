@@ -60,6 +60,8 @@
 
 @section('scripts')
     @parent
+    @vite(['resources/js/components/inputs/lazy-loading-input-select.js'])
+    @vite(['resources/js/components/inputs/airport-input.js'])
     @vite(['resources/js/components/document/accommodation-element.js'])
     @vite(['resources/js/components/document/bus-element.js'])
     @vite(['resources/js/components/document/train-element.js'])
@@ -104,4 +106,5 @@
     @vite(['resources/css/components/document/document-element.css'])
     @vite(['resources/css/travel.css'])
     @vite(['resources/css/components/timeline/timeline.css'])
+    @vite(['resources/css/components/inputs/lazy-loading-input-select.css'])
 @endsection

@@ -1,9 +1,15 @@
 $(document).ready(async () => {
+    initPlugins();
     let list = await fetchDocumentsList();
 
     renderDocumentsList(list);
     await renderTimeline();
 });
+
+function initPlugins() {
+    $('#departure_airport').initAirportInput($('[name="departure_country"]'), $('[name="departure_city"]'));
+    $('#arrival_airport').initAirportInput($('[name="arrival_country"]'), $('[name="arrival_city"]'));
+}
 
 $('#document-filters-bar').on('click', async function (event) {
     const target = $(event.target);
@@ -141,7 +147,9 @@ function clearModal(modal)
     modal.find('[name="place_number"]').val('');
 
     modal.find('[name="arrival_airport"]').val('');
+    modal.find('[name="arrival_airport"]').data('code', null);
     modal.find('[name="departure_airport"]').val('');
+    modal.find('[name="departure_airport"]').data('code', null);
     modal.find('[name="luggage_max_weight"]').val('');
     modal.find('[name="luggage_height"]').val('');
     modal.find('[name="luggage_length"]').val('');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DataController;
 use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\TravelsController;
 use Illuminate\Support\Facades\Auth;
@@ -41,5 +42,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/timeline', [DocumentsController::class, 'timeline']);
         Route::post('/save', [DocumentsController::class, 'save']);
         Route::post('/delete', [DocumentsController::class, 'delete']);
+    });
+
+    Route::group(['prefix' => 'data'], static function () {
+        Route::get('airports', [DataController::class, 'airports']);
     });
 });
