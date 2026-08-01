@@ -170,6 +170,7 @@ $('#save-document-button').on('click', async function () {
     let list = await fetchDocumentsList();
 
     renderDocumentsList(list);
+    await renderTimeline();
 });
 
 $('#delete-document-button').on('click', async function() {
@@ -184,6 +185,7 @@ $('#delete-document-button').on('click', async function() {
     let list = await fetchDocumentsList();
 
     renderDocumentsList(list);
+    await renderTimeline();
 })
 
 async function deleteDocument(data) {
