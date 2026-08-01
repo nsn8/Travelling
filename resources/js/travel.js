@@ -60,11 +60,6 @@ async function fetchDocumentsList(activeFilters = ['accommodation', 'bus', 'trai
 
 function renderDocumentsList(list)
 {
-    if (list.length === 0) {
-        $('#document-filters-bar').hide();
-        return;
-    }
-
     $('#document-filters-bar').show();
 
     $('.document-element').remove();
@@ -245,10 +240,6 @@ async function renderTimeline(timelineFilter = '', dateFilter = 'all_dates') {
             date_filter: dateFilter
         },
         success: function (response) {
-            if (response.events.length === 0) {
-                $('#timeline-filters-bar').hide();
-                return;
-            }
             $('#timeline-filters-bar').show();
 
             $('#route-timeline').initTimeline(response.events);
