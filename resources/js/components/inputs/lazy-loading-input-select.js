@@ -1,10 +1,10 @@
 import debounce from 'lodash/debounce';
 
 (function ($) {
-    $.fn.initInputSelect = function (inputName, endpoint, inputPlaceholder = '') {
+    $.fn.initInputSelect = function (inputName, endpoint, inputPlaceholder = '', fillFunction) {
         const container = $('<div>', {class: 'input-select'});
 
-        const searchInput = $('<input>', {type: 'text', name: inputName, placeholder: inputPlaceholder});
+        const searchInput = $('<input>', {type: 'text', name: inputName, placeholder: inputPlaceholder, autocomplete: 'off'});
 
         const optionsContainer = $('<div>', {class: 'input-select-options-container'});
         optionsContainer.css('display', 'none');
@@ -12,7 +12,7 @@ import debounce from 'lodash/debounce';
         searchInput.on('click', async function () {
             let search = searchInput.data('code') ?? '';
 
-            await load(search, endpoint, optionsContainer, searchInput);
+            await load(search, endpoint, optionsContainer, searchInput, fillFunction);
         });
 
         $(document).on('click', function (event) {
@@ -25,8 +25,11 @@ import debounce from 'lodash/debounce';
 
         searchInput.on('input', debounce(async function () {
             let search = searchInput.val();
+            if (!search) {
+                searchInput.data('code', '');
+            }
 
-            await load(search, endpoint, optionsContainer, searchInput);
+            await load(search, endpoint, optionsContainer, searchInput, fillFunction);
         }, 300));
 
         container.append(searchInput);
@@ -36,7 +39,7 @@ import debounce from 'lodash/debounce';
     }
 })(jQuery);
 
-async function load(search, endpoint, container, input) {
+async function load(search, endpoint, container, input, fillFunction) {
     $.ajax({
         url: endpoint,
         type: 'GET',
@@ -47,22 +50,7 @@ async function load(search, endpoint, container, input) {
             container.empty();
             container.show();
 
-            Object.values(response).forEach((airport) => {
-                const option = $('<div>', {class: 'input-select-option'});
-                option.html(airport.caption);
-                option.data('city', airport.city);
-                option.data('country', airport.country);
-                option.data('code', airport.iata_code);
-
-                option.on('click', function () {
-                    input.data('code', airport.iata_code);
-                    input.data('city', airport.city);
-                    input.data('country', airport.country);
-                    input.val(airport.caption).trigger('change');
-                });
-
-                container.append(option);
-            });
+            fillFunction(response, container, input);
         }
     });
 }

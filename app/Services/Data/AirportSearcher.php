@@ -19,7 +19,7 @@ class AirportSearcher
 
     public function get(): array
     {
-        return new AirportsParser(resource_path(self::FILE_PATH))
+        $airports = new AirportsParser(resource_path(self::FILE_PATH))
             ->setSeparator('|')
             ->get(
             [
@@ -33,5 +33,19 @@ class AirportSearcher
                 ]
             ]
         );
+
+        return $this->groupByCities($airports);
+    }
+
+    private function groupByCities(array $airports): array
+    {
+        $grouped = [];
+
+        foreach ($airports as $airport) {
+            $grouped[$airport['city']]['airports'][] = $airport;
+            $grouped[$airport['city']]['caption'] = "{$airport['city']}, {$airport['country']}";
+        }
+
+        return $grouped;
     }
 }
