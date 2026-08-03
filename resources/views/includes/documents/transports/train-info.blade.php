@@ -13,6 +13,6 @@
     </div>
     <div class="modal-block">
         <label>Номер места</label>
-        <input type="text" name="place_number" />
+        <input type="text" name="cart_place_number" />
     </div>
 </div>

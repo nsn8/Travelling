@@ -3,6 +3,7 @@
 namespace App\Collections;
 
 use App\DTO\Documents\DocumentsListDTO;
+use App\Enums\DocumentFilters;
 use App\Enums\DocumentTypes;
 use App\Enums\TransportTypes;
 use \Illuminate\Support\Collection as LaravelCollection;
@@ -10,11 +11,11 @@ use \Illuminate\Support\Collection as LaravelCollection;
 class DocumentsCollection extends Collection
 {
     private array $mapFilterToCollection = [
-        DocumentTypes::ACCOMMODATION->value => AccommodationsCollection::class,
-        TransportTypes::BUS->value          => BusesCollection::class,
-        TransportTypes::TRAIN->value        => TrainsCollection::class,
-        TransportTypes::FLIGHT->value       => FlightsCollection::class,
-        TransportTypes::SHIP->value         => ShipsCollection::class
+        DocumentFilters::ACCOMMODATION->value => AccommodationsCollection::class,
+        DocumentFilters::BUS->value           => BusesCollection::class,
+        DocumentFilters::TRAIN->value         => TrainsCollection::class,
+        DocumentFilters::FLIGHT->value        => FlightsCollection::class,
+        DocumentFilters::SHIP->value          => ShipsCollection::class
     ];
 
     public function __construct(DocumentsListDTO $dto)

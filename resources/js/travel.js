@@ -2,9 +2,10 @@ $(document).ready(async () => {
     let list = await fetchDocumentsList();
 
     renderDocumentsList(list);
+    await renderTimeline();
 });
 
-$('#filters-bar').on('click', async function (event) {
+$('#document-filters-bar').on('click', async function (event) {
     const target = $(event.target);
 
     if (!target.hasClass('document-filter')) {
@@ -20,7 +21,7 @@ $('#filters-bar').on('click', async function (event) {
     await refreshDocumentsList();
 });
 
-$('[name="search"]').on('input', async function () {
+$('#document-filters-bar > [name="search"]').on('input', async function () {
     await refreshDocumentsList();
 })
 
@@ -59,6 +60,8 @@ async function fetchDocumentsList(activeFilters = ['accommodation', 'bus', 'trai
 
 function renderDocumentsList(list)
 {
+    $('#document-filters-bar').show();
+
     $('.document-element').remove();
 
     let container = $('#documents-list');
@@ -167,6 +170,7 @@ $('#save-document-button').on('click', async function () {
     let list = await fetchDocumentsList();
 
     renderDocumentsList(list);
+    await renderTimeline();
 });
 
 $('#delete-document-button').on('click', async function() {
@@ -181,6 +185,7 @@ $('#delete-document-button').on('click', async function() {
     let list = await fetchDocumentsList();
 
     renderDocumentsList(list);
+    await renderTimeline();
 })
 
 async function deleteDocument(data) {
@@ -221,6 +226,87 @@ function closeModal(modal) {
     });
 }
 
-$('.return-button-container').on('click', function () {
+$('#return-button').on('click', function () {
     window.location.href = '/';
-})
+});
+
+async function renderTimeline(timelineFilter = '', dateFilter = 'all_dates') {
+    let travelId = $('[name="travel_id"]').val();
+
+    $.ajax({
+        url: '/documents/timeline',
+        method: 'GET',
+        data: {
+            travel_id: travelId,
+            timeline_filter: timelineFilter,
+            date_filter: dateFilter
+        },
+        success: function (response) {
+            $('#timeline-filters-bar').show();
+
+            $('#route-timeline').initTimeline(response.events);
+            if (dateFilter === 'all_dates') {
+                appendDates(response.dates)
+            }
+        }
+    })
+}
+
+$('#timeline-filters-bar').on('click', async function (event) {
+    const target = $(event.target);
+
+    if (!target.hasClass('timeline-filter') || target.attr('id') === 'dates-field') {
+        return;
+    }
+
+    let activeClicked = target.hasClass('timeline-filter-active');
+
+    $('.timeline-filter-active').removeClass('timeline-filter-active');
+
+    if (!activeClicked) {
+        target.addClass('timeline-filter-active');
+    } else {
+        target.removeClass('timeline-filter-active');
+    }
+
+    let timelineFilter = $('.timeline-filter-active').data('filter');
+    $('#dates-field').val();
+
+    await renderTimeline(timelineFilter);
+});
+
+$('#dates-field').on('change', async function () {
+    let date = $(this).val();
+    let timelineFilter = $('.timeline-filter-active').data('filter');
+
+    await renderTimeline(timelineFilter, date);
+});
+
+function appendDates(dates) {
+    let datesSelect = $('#dates-field');
+
+    let selectedDate = $('#dates-field').val();
+
+    datesSelect.empty();
+
+    const allDatesOption = $('<option>', {value: "all_dates"});
+
+    if (selectedDate === 'all_dates') {
+        allDatesOption.attr('selected', true);
+    }
+
+    // TODO: локализация
+    allDatesOption.html('Все даты');
+    datesSelect.append(allDatesOption);
+
+    Object.values(dates).forEach((date) => {
+        const option = $('<option>' , {value: date});
+
+        if (selectedDate === date) {
+            option.attr('selected', true);
+        }
+
+        option.html(date);
+        datesSelect.append(option);
+    });
+}

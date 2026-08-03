@@ -1,0 +1,83 @@
+.timeline-container {
+    margin-top: 10px;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 10% 90%;
+    gap: 0;
+    position: relative;
+    z-index: 0;
+}
+
+.timeline-event {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2px;
+    background-color: rgba(244, 240, 240, 0.96);
+    border-radius: 3px;
+}
+
+.timeline-event-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #667;
+}
+
+.timeline-event-hover {
+    background-color: rgba(190, 236, 224, 0.96);
+}
+
+.timeline-event-marker-hover {
+    color: rgba(113, 182, 162, 0.96);
+}
+
+.date-event-hover {
+    background-color: rgba(230, 151, 81, 0.6);
+}
+
+.date-event-marker-hover {
+    color: rgba(228, 130, 39, 0.6);
+}
+
+.timeline-event-upper-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: normal;
+    flex-direction: row;
+}
+
+.timeline-event-header {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.timeline-event-label {
+    margin-left: 5px;
+}
+
+.timeline-event-dates-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.timeline-event-info-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+#connection-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}

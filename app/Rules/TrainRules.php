@@ -13,7 +13,7 @@ class TrainRules implements DocumentRulesInterface
             'departure_railway_station' => 'required|string',
             'arrival_railway_station'   => 'required|string',
             'cart_number'               => 'required|string',
-            'place_number'              => 'required|string',
+            'cart_place_number'              => 'required|string',
         ];
     }
 }

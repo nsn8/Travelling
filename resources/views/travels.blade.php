@@ -33,12 +33,12 @@
 
 @section('scripts')
     @parent
-    @vite(['resources/js/components/travel-element.js'])
+    @vite(['resources/js/components/travel/travel-element.js'])
     @vite(['resources/js/travels.js'])
 @endsection
 
 @section('styles')
     @parent
-    @vite(['resources/css/components/travel-element.css'])
+    @vite(['resources/css/components/travel/travel-element.css'])
     @vite(['resources/css/travels.css'])
 @endsection

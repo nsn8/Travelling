@@ -29,7 +29,7 @@ class TrainDTO extends TransportDTO
         $this->departureRailwayStation = $data['departure_railway_station'] ?? null;
         $this->arrivalRailwayStation = $data['arrival_railway_station'] ?? null;
         $this->cartNumber = $data['cart_number'] ?? null;
-        $this->placeNumber = $data['place_number'] ?? null;
+        $this->placeNumber = $data['cart_place_number'] ?? null;
 
         $this->setType(TransportTypes::TRAIN->value);
     }
