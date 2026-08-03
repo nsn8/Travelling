@@ -2,7 +2,6 @@
 
 namespace App\Collections;
 
-use App\Collections\Collection;
 use App\Models\Documents\Accommodation;
 
 class AccommodationsCollection extends Collection

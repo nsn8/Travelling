@@ -30,7 +30,8 @@ class DocumentSaveRequest extends FormRequest
             $specificRules = match ($this->input('transport_type')) {
                 TransportTypes::FLIGHT->value => FlightRules::get(),
                 TransportTypes::TRAIN->value => TrainRules::get(),
-                TransportTypes::BUS->value => BusRules::get()
+                TransportTypes::BUS->value => BusRules::get(),
+                default => []
             };
 
             $specificRules = array_merge($specificRules, $transportRules);

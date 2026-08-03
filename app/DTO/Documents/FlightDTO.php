@@ -38,7 +38,7 @@ class FlightDTO extends TransportDTO
 
         $this->departureAirport = $data['departure_airport'] ?? null;
         $this->arrivalAirport = $data['arrival_airport'] ?? null;
-        $this->luggageIncluded = $data['luggage_included'] === 'on';
+        $this->luggageIncluded = !empty($data['luggage_included']);
         $this->luggageMaxWeight = $data['luggage_max_weight'] ?? null;
         $this->luggageWidth = $data['luggage_width'] ?? null;
         $this->luggageHeight = $data['luggage_height'] ?? null;

@@ -9,6 +9,7 @@
             <input type="hidden" name="id">
             <input type="hidden" name="name">
             <input type="hidden" name="document_type">
+            <input type="hidden" name="transport_type">
             <div class="modal-button-block">
                 <div class="modal-button cancel-modal" id="cancel-button">Отмена</div>
                 <div class="modal-button" id="delete-document-button">Подтвердить</div>

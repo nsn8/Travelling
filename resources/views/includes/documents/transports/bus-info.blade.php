@@ -1,4 +1,4 @@
-<div class="transport-type-info" id="bus-info" style="display: none">
+<div class="transport-type-info" id="bus-info">
     <div class="modal-block">
         <label>Автовокзал отправления</label>
         <input type="text" name="departure_station" />

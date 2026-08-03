@@ -27,4 +27,9 @@ class Accommodation extends Document
     protected string $accommodationAddress;
     protected string $checkInDate;
     protected string $checkOutDate;
+
+    protected function init(): void
+    {
+        // TODO: Implement init() method.
+    }
 }

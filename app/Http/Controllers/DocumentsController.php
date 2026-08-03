@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\DTO\Documents\DocumentDTO;
 use App\DTO\Documents\DocumentsListDTO;
 use App\Factories\DocumentDTOFactory;
 use App\Http\Requests\DocumentDeleteRequest;

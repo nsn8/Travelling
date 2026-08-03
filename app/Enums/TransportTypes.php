@@ -7,6 +7,7 @@ enum TransportTypes: string
     case FLIGHT = 'flight';
     case TRAIN = 'train';
     case BUS = 'bus';
+    case SHIP = 'ship';
 
     public static function values(): array
     {
