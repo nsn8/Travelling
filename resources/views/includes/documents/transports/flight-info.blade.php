@@ -1,11 +1,11 @@
 <div class="transport-type-info" id="flight-info" style="display: none">
     <div class="modal-block">
         <label>Аэропорт вылета</label>
-        <input type="text" name="departure_airport" />
+        <div id="departure_airport"></div>
     </div>
     <div class="modal-block">
         <label>Аэропорт прилета</label>
-        <input type="text" name="arrival_airport" />
+        <div id="arrival_airport"></div>
     </div>
     <div class="modal-block">
         <label>

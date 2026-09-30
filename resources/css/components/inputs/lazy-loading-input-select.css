@@ -1,0 +1,18 @@
+.input-select-options-container {
+    background-color: #f8f1f1;
+    position: absolute;
+    z-index: 1;
+    overflow-y: scroll;
+    max-width: 100%;
+    width: auto;
+}
+
+.input-select-option {
+    max-width: 100%;
+    width: auto;
+    cursor: pointer;
+}
+
+.input-select-option:hover {
+    background-color: #cfcdcd;
+}
